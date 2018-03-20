@@ -1,0 +1,43 @@
+1.Create a folder called branch_time.
+
+mk dir branch_time
+
+2.cd into that folder.
+
+cd branch_time
+
+3.Initialize an empty git repository.
+
+git init
+
+4.Create a file called first.txt, then add and commit the file.
+
+touch first.txt && git add first.txt && git commit -m "commiting first.txt"
+
+5.Create a new branch called amazing_feature.
+
+git checkout -b amazing_feature
+
+6.Create a file called best.txt.
+
+touch best.txt
+
+7.Add the file.
+
+git add best.txt
+
+8.Commit the file with the message -m "added best.txt".
+
+git commit best.txt -m "added best.txt"
+
+9.Switch back to the master branch.
+
+git checkout master
+
+10.Merge your changes from the feature branch into master.
+
+git merge amazing_feature
+
+11.Delete the feature branch.
+
+git branch -D amazing_feature

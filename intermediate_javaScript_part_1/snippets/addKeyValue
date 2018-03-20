@@ -1,0 +1,11 @@
+/* addKeyValue accepts three parameters, an array(of objects), a key and a
+value. The function returns the array of objects after each key and 
+value have been added to each object in the array. */
+
+function addKeyValue(arr, key, value) {
+    arr.forEach(obj => obj[key] = value);
+}
+
+var names = [{name: "Elie"}, {name: "Tim"}, {name: "Elie"}];
+addKeyValue(names, "isInstructor", true);
+console.log(names);

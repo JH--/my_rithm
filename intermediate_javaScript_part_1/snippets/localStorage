@@ -1,0 +1,33 @@
+/* session storage maintains a sperate storage area for each given domain that's available for the
+duration of the page session (as long as the browser is open including page reloads and restores)
+
+local storage does the same thing but persists even when the browser is closed and reopened.
+
+all keys in session storage and local storage must be strings
+
+localStorage stores eveything as strings 
+
+*/
+
+//how to add items to the the key: value store
+localStorage.setItem("instructor", "elie");
+
+//how to retrieve items
+localStorage.getItem("instructor");
+
+//how to delete a key
+localStorage.removeItem("instructor");
+
+//how to remove everything from local storage for this domain
+localStorage.clear();
+
+//Arrays get turned into strings everything is stored as a string
+var instructors = 'elie matt tim'.split(' ');
+localStorage.setItem("instructors", instructors);
+localStorage.getItem("instructors");  // "elie,mat,tim" 
+
+//Use JSON to convert the instructors array into a JSON string
+localStorage.setItem("instructorsJSON", JSON.stringify(instructors));
+
+//JSON.parse converts the JSON string back into JavaScript (in this case a valid array)
+JSON.parse(localStorage.getItem("instructorsJSON")); // ["elie, "mat", "tim"]

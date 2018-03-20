@@ -1,0 +1,8 @@
+/* Write a function called findByUsername which takes in a string and returns an object in the
+users array that has that username */
+
+function findByUsername (name) {
+  return users.filter( obj => obj.username === name)[0];
+}
+
+console.log(findByUsername("david"));

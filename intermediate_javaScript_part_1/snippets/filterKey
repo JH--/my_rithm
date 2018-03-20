@@ -1,0 +1,10 @@
+/* filterKey accepts two parameters, an array of objects, and the name of
+a key and returns an array with only those objects which have truthty 
+values for that key */
+
+function filterKey(arr, key){
+    return arr.filter(obj => obj[key]);
+}
+
+var arr = [{name: "Elie", isInstructor:true, isHilarious: false},{name: "Tim", isInstructor:true, isHilarious: true},{name: "Matt", isInstructor:true}] 
+console.log(filterKey(arr, 'isHilarious'));

@@ -1,0 +1,19 @@
+/* Random game selects a random number between 0 and 1 every 1000ms and each time
+a random number is picked it adds 1 to a counter. If the number is great then 0.75
+it stops the timer and returns the number of tries it took to find a number greater
+then 0.75. */
+
+function randomGame () {
+    counter = 0;
+    let timer = setInterval(function() {
+        ++counter;
+        let pick = Math.random();
+        if (pick > 0.75) {
+            clearTimeout(timer);
+            console.log(counter);
+        }
+    }, 1000);
+}
+
+randomGame();
+

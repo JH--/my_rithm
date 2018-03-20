@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            var container = document.getElementById("container");
+            container.addEventListener("click", function(event){
+                console.log("Let's look at the event object!", event);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container">
+        Click on me!
+    </div>
+</body>
+</html>

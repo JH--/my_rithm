@@ -1,0 +1,24 @@
+Part I
+Answer the following questions
+
+What is an em?
+
+An em is a relative unit of measurement equal to the font size of the element. If you define the font size in ems then 1 em is equal to the font size of the parent.
+
+What is the difference between em and rem?
+
+A rem is relative only to the root HTML element's font size. 1 rem will be the same size everywhere on a web page. 
+
+What is "mobile first" design?
+
+Mobile first design is a design strategy that creates CSS styles that are first applied to mobile deivces. Advanced styles and alternate layouts for larger screens are added to the stylesheet via media queries.
+
+What is BEM?
+
+Block Element Modifier. It's a naming strategy that uses classes to label and select all html elements. Blocks are indepenedent entities on a web page. Elements are things inside blocks that are dependent on their parent block for context and placement. A modifier is a flag on a block or element used to change appearance or behavior.
+
+Block - .block {}
+
+Element - .block__element {}
+
+Modifier - .block--element {}

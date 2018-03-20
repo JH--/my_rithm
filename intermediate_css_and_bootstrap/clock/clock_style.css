@@ -1,0 +1,70 @@
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+
+
+#clock {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	min-width: 420px;
+	min-height: 420px;
+	border: solid 5px rgba(128,128,128,1);
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-image: url("ios_clock.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 90%;
+}
+
+.middle {
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	background-color: #808080;
+	z-index: 4;
+}
+
+.hands {
+	position: absolute;
+	width: 10px;
+	border-radius: 5px;
+	transform-origin: bottom;
+}
+
+.second {
+	height: 200px;
+	background-color: #D3D3D3;
+	top: 35px;
+	z-index: 2;
+	animation: spin 60s steps(60) infinite; 
+}
+
+.minute {
+	height: 150px;
+	width: 12px;
+	background-color: #A9A9A9;
+	top: 85px;
+	z-index: 1;
+	animation: spin 3600s steps(60) infinite;
+}
+
+.hour {
+	height: 115px;
+	width: 15px;
+	background-color: #808080;
+	top: 120px;
+	z-index: 3;
+	animation: spin 43200s linear infinite;
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}

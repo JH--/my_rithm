@@ -1,0 +1,9 @@
+/* Write a function called hasFavoriteEditor which returns a boolean if any of the users have 
+the editor passed in */
+
+function hasFavoriteEditor (editor) {
+  return users.map(obj => obj.favoriteEditor).some(e => e === editor);
+}
+
+console.log(hasFavoriteEditor("Sublime Text"));
+console.log(hasFavoriteEditor("Eclipse"));

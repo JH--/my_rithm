@@ -1,0 +1,11 @@
+/* filterLetters accepts an array of letters and a specific letter and 
+returns the number of occurrences of the specific letter. 
+This function is case insensititve */
+
+function filterLetters(arr, letter) {
+    return arr.filter(c => c.toLowerCase() === letter.toLowerCase()).length;
+}
+
+console.log(filterLetters(['a', 'a', 'b', 'c', 'A'], 'a'));
+console.log(filterLetters(['a', 'a', 'b', 'c', 'A'], 'z'));
+console.log(filterLetters(['a', 'a', 'b', 'c', 'A'], 'B'));

@@ -1,0 +1,7 @@
+// Write a function called printHobbies which console.log's each hobby for each user.
+
+function printHobbies () {
+  users.forEach(obj => obj.hobbies.forEach( hobby => console.log(hobby)));
+}
+
+printHobbies();

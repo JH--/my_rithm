@@ -1,0 +1,29 @@
+/* the event.target property is the actual elemenent that triggered the event */
+
+/*
+var listItems = document.querySelectorAll("li");
+
+for(let li of listItems){
+    li.addEventListener("click", event => alert("You just clicked on " + event.target.innerText));
+};
+*/
+
+//Adding event listeners to parent elements
+
+// Option 1: listening to the parent
+var ul = document.querySelector('ul');
+
+// one event listener 
+ul.addEventListener("click", event => alert("You just clicked on " + event.target.innerText));
+
+//Option 2: listening on the children
+var listItems = document.getElementsByTagName("li");
+
+//Many event listeners. One per li 
+for (let li of listItems) {
+    li.addEventListener("click", event => alert("You just clicked on " + event.target.innerText));
+};
+
+/* The less event listeners the more efficient the code is. It's always better to have fewer event listeners
+as they consume memory and are difficult to manage when there are many of them */
+

@@ -1,0 +1,30 @@
+.row {
+	margin: 0 auto;
+	display: flex;
+}
+
+.column {
+	margin: 10px;
+	border: 1px solid rgba(0, 0, 0, 1);
+	height: 100px;
+	flex: 1 1 0px;
+}
+
+.column.purple {
+	background-color: #8D7CC2;
+}
+
+.column.pink {
+	background-color: #E06665;
+	height: 400px;
+}
+
+.column.green {
+	background-color: #92C47D;
+	height: 400px;
+}
+
+.column.orange {
+	background-color: #FE9900;
+	height: 400px;
+}

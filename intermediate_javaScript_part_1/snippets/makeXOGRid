@@ -1,0 +1,12 @@
+/*makeXOGrid = (rows, columns) => {
+    const row = [...Array(columns).keys()].map(c => c%2==0 ? 'X' : 'O');
+    return [...Array(rows).keys()].map(r => row);
+} */
+
+makeXOGrid = (rows, columns) => {
+    const xRow = [...Array(columns).keys()].map(c => c%2==0 ? 'X' : 'O');
+    const oRow = [...Array(columns).keys()].map(c => c%2==0 ? 'O' : 'X');
+    return [...Array(rows).keys()].map(r => columns%2 === 1 && r%2 === 1 ? oRow : xRow);
+}
+
+makeXOGrid(3,4);

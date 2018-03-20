@@ -1,0 +1,10 @@
+/*numberFact takes as input a number and a callback and returns the result of
+the callback with the number passed to it. */
+
+
+function numberFact(i, fn){
+    return fn(i);
+}
+
+
+console.log(numberFact(8, isEven));

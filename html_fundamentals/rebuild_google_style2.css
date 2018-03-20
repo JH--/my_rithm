@@ -1,0 +1,143 @@
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: small;
+	margin: 0px;
+	padding: 0px;
+}
+
+.wrap {
+	height: auto;
+	margin: 0 auto -50px; /* footer height + space */
+	min-height: 100%;
+	padding: 0 0 50px;   /* footer height + space */
+	box-sizing: border-box;
+	overflow: auto;
+}
+
+a:link {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.row {
+	margin: 0 auto;
+	display: flex;
+	min-width: 890px;
+/*	border: 1px solid rgba(0,0,0,1); */
+}
+
+.top {
+	margin: 10px;
+/*	border: 1px solid rgba(0, 0, 0, 1); */
+	flex: 1 1 0px;
+}
+
+.top.left {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+}
+
+.top.right {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.top a {
+	margin: 10px;
+}
+
+.top i {
+	margin: 10px;
+}
+
+.top button {
+	margin: 10px;
+	color: #FFFFFF;
+	background-color: #4285F4;
+	border: none;
+	text-align: center;
+	text-decoration: none;
+	padding: 8px 16px;
+	font-weight: bold;
+	font-size: 14px;
+	border-radius: 2px;
+}
+
+.row.mid {
+	display: flex;
+	justify-content: center;
+	width: 890px;
+}
+
+img {
+	height: 30%;
+	width: 30%;
+	padding-top: 115px;
+}
+
+input {
+	height: 40px;
+	width: 580px;
+	margin-top: 30px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 2px;
+	box-shadow: 0px 2px 3px 1px #ccc;
+}
+
+.row.mid button {
+	margin: 5px;
+	margin-top: 30px;
+	border: none;
+	border-radius: 2px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 8px 16px;
+	background-color: #f2f2f2;
+	color: #757575;
+}
+
+.footer {
+	background-color: #f2f2f2;
+	height: 40px;   /* footer height */
+	display: flex;  /* block property */
+	margin-top: 10px;  /* space between wrap and footer */
+	box-sizing: border-box;
+	position: relative;
+	width: 100%;
+	min-width: 890px;
+}
+
+.bottom.left {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	flex: 1 1 0px;
+	padding-left: 20px;
+}
+
+.bottom.right {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: flex-end;
+	flex: 1 1 0px;
+	padding-right: 20px;
+}
+
+.bottom a {
+	margin-right: 10px;
+	margin-left: 10px;
+	color: rgba(0, 0, 0, 0.54)
+}

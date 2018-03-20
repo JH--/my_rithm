@@ -1,0 +1,23 @@
+var buttons = document.getElementsByTagName('button');
+
+/*
+
+for(button of buttons){
+    button.addEventListener('click', () => alert('You clicked a button!'));
+}
+
+If we use an anonymous function we can't remove it in the future. If we want to remove an
+eventlistener we must name the function that we add. */
+
+function alertData () {
+    alert('You just clicked on a button!');
+}
+
+for (let button of buttons){
+    button.addEventListener('click', alertData);
+}
+
+for (let button of buttons){
+    button.removeEventListener('click', alertData);
+}
+

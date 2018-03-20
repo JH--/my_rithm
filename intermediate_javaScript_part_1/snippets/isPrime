@@ -1,0 +1,18 @@
+/* isPrime takes a number as a parameter and returns true if it's a prime number
+false if it's not. */
+
+
+function isPrime(num){
+    if (num <= 1) {
+        return false;
+    }
+    for (i of [...Array(num).keys()].slice(2,num)) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+console.log(isPrime(8));
+console.log(isPrime(17));

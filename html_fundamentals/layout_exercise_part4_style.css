@@ -1,0 +1,32 @@
+#wrap {
+	width: 600px;
+}
+
+.row {
+	display: flex;
+	margin: 0 auto;
+}
+
+.column {
+	margin: 10px;
+	border: 1px solid rgba(0, 0, 0, 1);
+	height: 150px;
+	flex: 1 1 0px;
+}
+
+.column.green {
+	background-color: #009D0E;
+	height: 100px;
+}
+
+.column.orange {
+	background-color: #FE9900;
+}
+
+.column.red {
+	background-color: #CF2A28;
+}
+
+.column.blue {
+	background-color: #6FA8DD;
+}

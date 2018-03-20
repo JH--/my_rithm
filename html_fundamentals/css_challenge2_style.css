@@ -1,0 +1,23 @@
+#wrap {
+	background: #54CCFF;
+	display: flex;
+	flex-flow: column wrap;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 10px;
+	width: 831px;
+	font-size: 115%;
+}
+
+#wrap ul {
+	display: flex;
+	flex-flow: column nowrap;
+	list-style-type: none;
+	align-self: center;
+	align-items: center;
+}
+
+#wrap ul li:first-letter {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 170%;
+}

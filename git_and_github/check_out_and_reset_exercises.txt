@@ -1,0 +1,94 @@
+1.Create a folder called destruction.
+
+mkdir destruction
+
+2.cd into that folder.
+
+cd destruction
+
+3.Initialize an empty git repository.
+
+git init
+
+4.Create a file called done.txt.
+
+touch done.txt
+
+5.Remove that file from the working directory (remember you can not use git checkout).
+
+git clean -f
+
+6.Create a file called stage_me.txt.
+
+touch stage_me.txt
+
+7.Add stage_me.txt file to the staging area.
+
+git add stage_me.txt
+
+8.Move stage_me.txt file from the staging area to the working directory.
+
+git rm --cached stage_me.txt
+
+9.Add stage_me.txt file to the staging area.
+
+git add stage_me.txt
+
+10.Remove stage_me.txt from the staging area and the working directory.
+
+git rm -f stage_me.txt
+
+11.Create a new file called commit_me.txt.
+
+touch commit_me.txt
+
+12.Add commit_me.txt to the staging area.
+
+git add commit_me.txt
+
+13.Commit with the message "adding commit_me.txt".
+
+git commit -m "adding commit_me.txt"
+
+14.Create another file called second.txt.
+
+touch second.txt
+
+15.Add second.txt to the staging area.
+
+git add second.txt
+
+16.Commit with the message "adding second.txt".
+
+git commit -m "adding second.txt"
+
+17.Check out your previous commits using git log --oneline to see the unique identifier or SHA for each of your commits.
+
+git log --oneline  >>  7b2179f adding second.txt
+                       7602bd8 adding commit_me.txt
+
+18.Using git reset, undo the previous commit and move your changes back to the working directory.
+
+git reset 7602bd8
+
+19.Add second.txt again.
+
+git add second.txt
+
+20.Commit with the message "Trying to commit again".
+
+git commit -m "Trying to commit again"
+
+21.Using git reset undo the previous commit and move your changes back to the staging area.
+
+git reset --soft 7602bd8
+
+22.Commit with the message "Trying to commit again and again".
+
+git commit -m "Trying to commit again and again"
+
+23.Using git reset undo the previous commit so that any changes are not part of the working directory.
+
+git reset --hard 7602bd8
+
+Pat yourself on the back! You just went through a pretty complex git workflow!

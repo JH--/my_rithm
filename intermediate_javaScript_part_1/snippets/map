@@ -1,0 +1,19 @@
+/* map accepts two parameters an array and a callback function. 
+It returns a new array that is the result of each value being 
+passed to the callback. */
+
+
+function map (arr, fn) {
+    const result = [];
+    for (i of arr) {
+        result.push(fn(i));
+    }
+    return result;
+}
+
+//const numbers = [1,2,3];
+
+console.log(numbers);
+console.log(map (numbers, function (i) {
+    return i * 2;
+}));

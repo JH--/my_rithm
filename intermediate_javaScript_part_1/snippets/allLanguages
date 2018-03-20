@@ -1,0 +1,7 @@
+// Write a function called allLanguages which returns an array of all of the unique values
+
+function allLanguages () {
+  return Array.from(new Set(users.reduce( (acc, next) => acc.concat(next.favoriteLanguages), [])));
+}
+
+console.log(allLanguages());

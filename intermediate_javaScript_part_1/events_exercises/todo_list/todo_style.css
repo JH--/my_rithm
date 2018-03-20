@@ -1,0 +1,105 @@
+body {
+	font-family: Roboto Mono, san-serif;
+	margin: 0px;
+	padding: 0px;
+}
+
+section {
+	display: flex;
+	min-width: 500px;
+	max-width: 740px;
+	margin-bottom: 10px;
+	
+}
+
+#list {
+	flex: 1 1 0px;
+	display: flex;
+	flex-flow: column;
+}
+
+.row {
+	flex: 1 1 0px;
+	min-height: 30px;
+	align-items: flex-start;
+}
+
+.title {
+	justify-content: center;
+}
+
+form {
+	flex: 1 1 0px;
+	display: flex;
+}
+
+input {
+	flex: 1 1 0px;
+	margin-right: 2px;
+	margin-left: 10px;
+	font-size: 18px;
+}
+
+div {
+	flex: 1 1 0px;
+	display: flex;
+	align-items: center;
+	min-height: 33px;
+}
+
+.checkbox {
+	flex: 1 1 0px;
+}
+
+.item {
+	flex: 10 1 0px;
+	font-size: 18px;
+	flex-flow: row wrap;
+}
+
+.delete {
+	justify-content: flex-end;
+}
+
+button {
+	border-radius: 5px;
+	margin-right: 10px;
+}
+
+.material-icons {
+	color: rgba(0, 0, 0, 0.54);
+}
+
+
+
+
+
+/*
+.row {
+	max-width: 740px;
+	min-width: 420px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+}
+
+input {
+	height: 20px;
+	width: 380px;
+	margin-top: 30px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 2px;
+	box-shadow: 0px 2px 3px 1px #ccc;
+}
+
+.list {
+	margin-top: 30px;
+	justify-content: space-between;
+}
+
+.item {
+	width: 380px;
+	background-color: black;
+	color: white;
+}
+*/

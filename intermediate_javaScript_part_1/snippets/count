@@ -1,0 +1,22 @@
+
+const counter = () => {
+    let count = 0;
+    return function () {
+        return ++count;
+    }
+}
+
+console.log('c1');
+
+const c1 = counter();
+console.log(c1());
+console.log(c1());
+console.log(c1());
+
+console.log('c2');
+
+const c2 = counter();
+console.log(c2());
+console.log(c2());
+console.log(c2());
+

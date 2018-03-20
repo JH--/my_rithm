@@ -1,0 +1,9 @@
+/* printFirstAndLast accepts an array (of objects) and console.logs a 
+new string with the first and last character of each value. */
+
+function printFirstAndLast(arr){
+    arr.forEach(val => console.log(val[0]+val.slice(-1)));
+}
+
+printFirstAndLast(['awesome', 'example', 'of', 'forEach']);
+

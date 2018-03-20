@@ -1,0 +1,17 @@
+/* countdown accepts a number as a parameter and every 1000ms decrements the value
+and console logs it. Once the value is 0 it console logs "DONE!" and stops. */
+
+
+var countdown = function(i){
+    setTimeout(function(){
+        clearTimeout(timer);
+        console.log("DONE!");
+    }, i * 1000);
+    var timer = setInterval(function() {
+        --i;
+        console.log(i);
+    }, 1000)
+}
+
+
+countdown(11);

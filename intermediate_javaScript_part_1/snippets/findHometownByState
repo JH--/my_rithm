@@ -1,0 +1,8 @@
+/* Write a function called findHometownByState which returns the first user which has a
+hometown of the state that is passed in. */
+
+function findHometownByState (state) {
+  return users.filter(obj => obj.hometown.state === state)[0];
+}
+
+console.log(findHometownByState("CA"));

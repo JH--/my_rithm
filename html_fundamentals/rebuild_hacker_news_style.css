@@ -1,0 +1,206 @@
+html {
+	width: 100%;
+}
+
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10pt;
+
+	background-color: #f6f6ef;
+	width: 100%;
+}
+
+.row {
+	display: flex;
+	flex-flow: row nowrap;
+	margin: 0 auto;
+	min-width: 525px;
+	width: 85%;
+	color: #828282;
+}
+
+.row.top {
+	height: 20px;
+	background-color: #ff6600;
+	padding: 2px;
+}
+
+.row.top img {
+	width: 18px;
+	height: 18px;
+	border: 1px solid white;
+	margin-right: 2px;
+}
+
+.top  {
+	display: flex;
+	flex: 1 1 0px;
+/*	border: 1px solid rgba(0,0,0,1); */
+}
+
+.top .left {
+	flex: 3 1 0px;
+	align-items: flex-end;
+}
+
+.top .right {
+	justify-content: flex-end;
+}
+
+.top a {
+	text-decoration: none;
+	color: black;
+	padding: 2px;
+	align-self: center;
+}
+
+.top .hn {
+	font-weight: bold;
+	padding-right: 10px;
+	align-self: center;
+}
+
+.top .left img {
+	align-self: center;
+}
+
+.top .left .line {
+	position: relative;
+	bottom: 2px;
+	margin-left: 2px;
+	margin-right: 2px;
+	color: black;
+}
+
+.top .login {
+	margin-right: 2px;
+}
+
+.posts {
+	position: relative;
+	right: 20px;
+}
+
+li {
+	margin-bottom: 5px;
+}
+
+.p_top img {
+	max-width: 4%;
+	max-height: 4%;
+}
+
+.p_top a {
+	text-decoration: none;
+}
+
+.domain {
+	font-size: 8pt;
+	color: #858585;
+}
+
+.domain:hover {
+	text-decoration: underline;
+}
+
+.title {
+	color: black;
+}
+
+.p_bottom {
+	color: #828282;
+	font-size: 7pt;
+	display: flex;
+	position: relative;
+	left: 13px;
+	margin-top: 2px;
+}
+
+.p_bottom a {
+	text-decoration: none;
+	color: #828282;
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+.p_bottom a:hover {
+	text-decoration: underline;
+}
+
+.more {
+	color: black;
+	text-decoration: none;
+	position: relative;
+	left: 33px;
+}
+
+.more:hover {
+	text-decoration: underline;;
+}
+
+.b_line {
+	flex: 1 1 0px;
+}
+
+hr {
+	border-color: #ff6600;
+}
+
+.b_links {
+	flex: 1 1 0px;
+	display: flex;
+	justify-content: center;
+	color: #828282;
+	margin-bottom: 15px;
+}
+
+.b_links a {
+	text-decoration: none;
+	color: black;
+	font-size: 8pt;
+	margin: 2px;
+}
+
+label, input {
+	margin: 2px;
+	align-self: center;
+}
+
+@media screen and (max-width: 750px) {
+	body {
+		padding: 0;
+		margin: 0;
+	}
+
+	.row {
+		width: 100%;
+		padding-right: 2px;
+		padding-left: 2px;
+	}
+
+	.row.top {
+		height: 38px;
+		flex: 1 1 0px;
+	}
+
+	.top a, .top .line {
+		align-self: flex-end;
+		position: relative;
+		right: 103px;
+		bottom: 2px;
+	}
+
+	.top .hn {
+		position: static;
+		align-self: flex-start;
+		font-size: 11pt;
+		margin-left: 5px;
+		margin-top: 1px;
+	}
+
+	.top .login {
+		position: static;
+		align-self: center;
+		margin-right: 6px;
+	}
+}

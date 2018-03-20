@@ -1,0 +1,62 @@
+/* The problems all assume you have access to the song data in the data.js file.
+ The data represents all of the songs to hit #1 on the Billboard Hot 100 from 2000 
+ through 2015. The following data is recorded for each song:
+
+song name,
+artist name,
+the year when the song first hit #1
+the month when the song first hit #1
+the date in the month when the song first hit #1
+how many (not necessary consecutive!) weeks the song was #1
+the duration of the song, in minutes and seconds.
+
+*/
+
+function findSongObj (song) {
+    return songs.filter(obj => obj.name === song)[0];
+}
+
+/* Write a function called summerJamCount which takes in an array of songs and returns the number of songs which 
+hit #1 on the charts in June, July, or August.*/
+
+//Refactor summerJamCount to use reduce!
+
+function summerJamCount (arr){
+    return arr.reduce((acc, song) => {
+        if ([6,7,8].includes(findSongObj(song).month)){
+            return acc + 1;
+        }
+        return acc;
+    }, 0)
+}
+
+/*Write a function called getTotalDurationInSeconds which takes in an array of songs and returns the total amount 
+of time (in seconds) it would take to listen to all of the songs. (Hint: can you use anything you've written 
+already to help solve this problem?) */
+
+function getTotalDurationInSeconds (arr) {
+    return arr.reduce((time, song) => time + getDurationInSeconds([song])[0], 0);
+}
+
+/*Write a function called getSongCountByArtist which takes in an array of songs and returns an object. 
+The keys in the object should be artist names, and the values should be the number of songs by that 
+artist in the orignal array. */
+
+function getSongCountByArtist (arr) {
+    return arr.reduce((result, song) => {
+        let song_obj = findSongObj(song);
+        if (song_obj.artist in result) {
+            result[song_obj.artist]++;
+        } else {
+            result[song_obj.artist] = 1;
+        }
+        return result;
+    }, {})
+}
+
+/*Write a function called averageWeeksAtNumberOne which takes in an array of songs and returns the 
+average number of weeks that songs on the list were #1. */
+
+function averageWeeksAtNumberOne (arr) {
+    return arr.reduce((weeks, song) => findSongObj(song).weeksAtNumberOne + weeks, 0) / arr.length;
+}

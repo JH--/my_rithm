@@ -1,0 +1,15 @@
+/* addKeyValue accepts three parameters, an array(of objects), a key and a
+value. The function returns the array of objects after each key and 
+value have been added. */
+
+function addKeyValue(arr, key, val){
+    return arr.reduce((acc, next) => {
+        next[key] = val;
+        acc.push(next);
+        return acc;
+    }, []);
+}
+
+var names = [{name: "Elie"}, {name: "Tim"}, {name: "Elie"}];
+addKeyValue(names, "isInstructor", true);
+console.log(names);

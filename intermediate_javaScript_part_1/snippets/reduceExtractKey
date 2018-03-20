@@ -1,0 +1,13 @@
+/* extractKey accepts two paramters, an array of objects, and the name
+of a key and returns an array with just the values for that key */
+
+function extractKey(arr, key){
+    return arr.reduce((acc, next) => {
+        acc.push(next[key]);
+        return acc;
+    }, []);
+}
+
+
+arr = [{name: "Elie", isInstuctor:true}, {name: "Tim", isInstuctor:true}, {name: "Matt", isInstuctor:true}];
+console.log(extractKey(arr, 'name'));

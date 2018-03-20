@@ -1,0 +1,17 @@
+/* reject accepts two parameters an array and a callback function.
+It returns an array with all of the values that do not return true
+to the callback. */
+
+
+function reject (arr, fn) {
+    const result = [];
+    for (i of arr){
+        if (!fn(i)) {
+            result.push(i);
+        }
+    }
+    return result;
+}
+
+console.log(reject ([1,2,3,4,5], i => i > 2));
+console.log(reject ([2,3,4,5], i => i % 2 === 0));

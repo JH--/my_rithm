@@ -1,0 +1,20 @@
+//each accepts two parameters an array and a callback function. It loops over 
+//the array and runs the callback function on each element.
+
+function each(arr, fn) {
+    for (i of arr){
+        fn(i);
+    }
+}
+
+//const numbers =[1,2,3];
+
+function double(i) {
+    return i * 2;
+}
+
+each(numbers, double);
+
+each([1,2,3], function(i){
+    console.log(i);
+});

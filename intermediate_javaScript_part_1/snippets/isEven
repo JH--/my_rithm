@@ -1,0 +1,6 @@
+//isEven takes a number as a paramter and returns true if it's even flase it's odd
+
+function isEven(i) {
+    return i % 2 === 0;
+}
+
