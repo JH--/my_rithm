@@ -1,0 +1,15 @@
+1. What is the difference between git reset and git revert? When would you use one over the other?
+
+git reset undoes a commit and removes all of the commits after it from the commit history. git revert undoes a commit and adds a new commit with the resulting content. git revert is useful when working with other developers since it does not alter the commit history. git reset should be used only on private branches that no one else is working on since you can alter the commit history by eleiminating commits. git revert portrays a total commit history and git reset portrays a steamlined commit history ommitting mistaken commits. 
+
+2. What is the difference between git merge and git rebase? When would you use one over the other?
+
+git merge is a non-destructive way to combine two branches using a new commit. git rebase moves an entire brach to begin on the tip of another branch. Insetad of using a merge commit rebasing destructively rewrites the commit history by creating brand new commits for each commit of the branch that is combined into another branch. Rebasing is useful to achive a clean linear commit history. This is a great way to clean up a branch prior to merge it with master. Merge is useful to preserve the complete history of a project and avoid the risk of rewriting commits.
+
+3. What is the difference between git stash pop and git stash apply? When would you use one over the other?
+
+Both commands move the latest stashed changes back into the working directory. The difference is that git stash pop removes the commit from the git stash list and git stash apply leaves it in the list.  
+
+4. What kind of things can you do in interactive mode when rebasing?
+
+You can choose which commit to use. You can edit a commit or edit it's commit message. You can remove commits. You can also combine less significant commits into one commit to tidy up the commit history.
