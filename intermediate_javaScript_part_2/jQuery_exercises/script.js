@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 	/*Give all images inside of an article tag the class of image-center 
 	(this class is defined inside of the style tag in the head). */
-	$("article img").addClass((i) => "image-center");
+	$("article img").addClass("image-center");
 
 	//Remove the last paragraph in the article.
 	$("article p:last-child").remove();
