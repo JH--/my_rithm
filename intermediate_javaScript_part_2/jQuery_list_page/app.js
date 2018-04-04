@@ -3,6 +3,7 @@ $(document).ready(function () {
 		event.preventDefault();
 		let title = ($("#movieTitle").val() ? $("#movieTitle").val() : false);
 		if (!title){
+			$("#movieRating").val("");
 			return;
 		}
 		let rating = $("#movieRating").val();
@@ -29,6 +30,7 @@ $(document).ready(function () {
 		$("#movieTitle").val("");
 		$("#movieRating").val("");
 	})
+	$("#movieTable").on("click", "#delete", event => $(event.target).parent().parent().remove());
 })
 
 /*
