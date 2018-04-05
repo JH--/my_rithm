@@ -40,17 +40,9 @@ $(document).ready(function () {
 	$("thead").on("click", "#ratingSort", event => {
 		const rows = extractInfo();
 		if(rows[0].rating > rows[rows.length-1].rating){
-			rows.sort((a, b) => {
-				if(a.rating > b.rating){return 1;}
-				if(a.rating < b.rating){return -1;}
-				return 0;
-			})
+			rows.sort((a,b) => a.rating - b.rating);
 		} else {
-			rows.sort((a, b) => {
-				if(a.rating < b.rating){return 1;}
-				if(a.rating > b.rating){return -1;}
-				return 0;
-			})
+			rows.sort((a,b) => b.rating - a.rating);
 		}
 		$tbody.empty();
 		rows.forEach(row => $tbody.append(buildRow(row.title, row.rating)));		
