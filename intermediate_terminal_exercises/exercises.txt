@@ -1,0 +1,102 @@
+Part I
+Answer the following questions:
+
+Create an environment variable called FIRST_NAME and set it equal to your first name (this does not need to be permanent)
+
+export FIRST_NAME=Joe
+
+Print the FIRST_NAME variable
+
+echo $FIRST_NAME
+
+Print out the $PATH variable
+
+echo $PATH
+
+What is the $PATH variable?
+
+It is the location the treminal uses to find programs to execute
+
+Why would you want to create an environment variable?
+
+You can pass information and context to programs => to secure info and use a variable multiple times
+
+How do you permanently save environment variables?
+
+you add them to the terminal's profile file
+
+What is a process?
+
+A program that is being run
+
+How do you list all processes running on your machine?
+
+ps aux
+
+What is a PID?
+
+PID is the unique process number associated with a program that is being run
+
+How do you terminate a process?
+
+kill (PID#)
+
+What is the difference between kill and kill -9?
+
+kill send the term message indicating that a program should terminate.
+kill -9 sends a uncatchable unignorable kill signal.
+
+What grep flag allows for case insensitive search?
+
+-i
+
+What grep flag allows for a certain number of lines before the match?
+
+-B
+
+What grep flag allows for a certain number of lines around the match?
+
+-C
+
+What grep flag allows for a certain number of lines after the match?
+
+-A
+
+What grep flag allows for full word search?
+
+-w
+
+What grep flag shows you the line number of a match?
+
+-n
+
+Part II
+Write the following terminal commands to do the following (assume that instructors.txt is an imaginary file):
+
+Find all files inside the Desktop folder that have a name of "learn."
+
+find ~/Desktop -name "learn"
+
+Find all files inside the Desktop folder that start with a "P."
+
+find ~/Desktop -name "P*"
+
+Find all files inside the Desktop folder that end with .txt.
+
+find ~/Desktop "*.txt"
+
+Find all files inside the Desktop/views folder that have the name data somewhere in their filename.
+
+find ~/Desktop/views -name "*data*"
+
+Inside of the instructors.txt file, output the number of times the word "Elie" appears.
+
+grep -cw "Elie" instructors.txt
+
+Inside of the instructors.txt file, list all matches for any full word that starts with a capital "P."
+
+grep -w "P.*" instructors.txt
+
+Inside of the instructors.txt file, list all the line numbers for any full word that starts with a "z" (it should match regardless of upper or lower case).
+
+grep -ni "z.*" instructors.txt
