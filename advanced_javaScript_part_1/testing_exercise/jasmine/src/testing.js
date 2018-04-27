@@ -3,7 +3,7 @@ function replaceWith(str, target, replacement) {
 };
 
 function expand(arr, N) {
-	return [].concat.apply([], Array(N).fill(arr));
+	return [].concat(...Array(N).fill(arr));
 };
 
 function acceptNumbersOnly() {
