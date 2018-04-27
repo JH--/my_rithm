@@ -1,0 +1,27 @@
+Call Apply Bind Exercises
+Fix the following code:
+
+var obj = {
+    fullName: "Harry Potter",
+    person: {
+        sayHi: function(){
+            return "This person's name is " + this.fullName
+        }
+    }
+}
+
+-----------------------------Solution--------------------------------------
+
+
+var obj = {
+    fullName: "Harry Potter",
+    sayHi: function(){
+        return "This person's name is " + this.fullName
+    }
+}
+
+---------------------------------------------------------------------------
+
+List two examples of "array-like-objects" that we have seen.
+
+	the arguments object and the various DOM elements that we get via Document selector
