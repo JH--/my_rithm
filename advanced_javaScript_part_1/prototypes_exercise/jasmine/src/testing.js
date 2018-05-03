@@ -67,11 +67,35 @@ Part II:
 Make the tests pass for the following tasks:
 
 Implement your own version of Array.prototype.map
+*/
+Array.prototype.map = function(fn){
+	let result = [];
+	let i = 0;
+	for (let item of this){
+		result.push(fn(item, i, this));
+		i += 1;
+	};
+	return result;
+};
 
-Implement a function that reverses a string and place it on the String.prototype
+//Implement a function that reverses a string and place it on the String.prototype
+String.prototype.reverse = function (){
+	return this.split('').reverse().join('');
+};
 
-Implement your own version of Function.prototype.bind
+//Implement your own version of Function.prototype.bind
+Function.prototype.bind = function(){
+  let thisArg;
+  [thisArg, ...firstArgs] = [].slice.call(arguments);
+  let fnToBind = this;
+  let fnBound = function(){
+  	let moreArgs = [].slice.call(arguments);
+  	return fnToBind.apply(thisArg, firstArgs.concat(moreArgs));
+  };
+  return fnBound;
+};
 
+/*
 Part III:
 For the last part, let's think less about the actual code we need to write and
 more about thinking in an Object Oriented way.

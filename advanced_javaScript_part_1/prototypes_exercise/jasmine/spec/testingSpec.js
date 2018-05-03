@@ -75,7 +75,7 @@ describe("#addToFamily", function(){
 describe("#toString", function() {
   var p1 = new Person("Tim", "Garcia", "Blue", 7);
   it("is shared amongst all objects created from the Person constructor", function(){
-    expect(p1.hasOwnProperty('toString')).to.equal(false);
+    expect(p1.hasOwnProperty('toString')).toEqual(false);
     expect(Person.prototype.toString).toExist;
   });
 
@@ -122,7 +122,7 @@ describe("Array.prototype.reduce", function(){
       return acc;
     }, init);
     expect(res).toEqual(init);
-    expect(res.numbers).toBe("array");
+    expect(res.numbers).toEqual(jasmine.any(Array));
     expect(res.numbers).toEqual(init.numbers);
     expect(res.numbers.length).toEqual(4);
     expect(res.numbers).toEqual(arr);
@@ -132,8 +132,8 @@ describe("Array.prototype.reduce", function(){
 
 describe("String.prototype.reverse", function(){
   it("returns a new reversed string", function(){
-    expect("test".reverse()).to.equal("tset");
-    expect("tacocat".reverse()).to.equal("tacocat");
+    expect("test".reverse()).toEqual("tset");
+    expect("tacocat".reverse()).toEqual("tacocat");
   });
 });
 
