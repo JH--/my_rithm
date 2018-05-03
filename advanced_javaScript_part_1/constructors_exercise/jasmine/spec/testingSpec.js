@@ -24,7 +24,7 @@ describe("Person", function(){
 
 describe("#multiplyFavoriteNumber", function(){
 	it("takes in a number and returns the product of the number and the Person's favorite number", function(){
-		expect(person.multiplyFavoriteNumber(10).toEqual(340));
+		expect(person.multiplyFavoriteNumber(10)).toEqual(340);
 	});
 });
 
