@@ -92,11 +92,11 @@ window.addEventListener("load", function() {
       red_triangle = {
         draw: () =>{
           ctx.fillStyle = "red";
-          let x = chooseRandom(0, canvas.width - (canvas.width * 0.1));
+          let x = chooseRandom(0, canvas.width - (canvas.width * 0.2));
           let y = chooseRandom(0, canvas.height - (canvas.height * 0.2));
           ctx.beginPath();
           ctx.lineTo(x,y);
-          ctx.lineTo(x+(canvas.width*0.1), y+(canvas.height*0.1));
+          ctx.lineTo(x+(canvas.width*0.2), y+(canvas.height*0.2));
           ctx.lineTo(x, y+(canvas.height*0.2));
           ctx.fill();
           ctx.closePath();
@@ -106,11 +106,11 @@ window.addEventListener("load", function() {
       },
       white_triangle = {
         draw: () =>{
-          let x = chooseRandom(0, canvas.width - (canvas.width * 0.1));
+          let x = chooseRandom(0, canvas.width - (canvas.width * 0.2));
           let y = chooseRandom(0, canvas.height - (canvas.height * 0.2));
           ctx.beginPath();
           ctx.lineTo(x,y);
-          ctx.lineTo(x+(canvas.width*0.1), y+(canvas.height*0.1));
+          ctx.lineTo(x+(canvas.width*0.2), y+(canvas.height*0.2));
           ctx.lineTo(x, y+(canvas.height*0.2));
           ctx.fill();
           ctx.closePath();
@@ -144,3 +144,8 @@ window.addEventListener("load", function() {
     }
   });
 });
+
+
+
+
+
