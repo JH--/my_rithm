@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<ul>
+{% for line in headlines %}
+    <li style="margin:1em">
+        <a href="https://news.google.com{{ line['href'][1:] }}">{{ line.text }}</a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

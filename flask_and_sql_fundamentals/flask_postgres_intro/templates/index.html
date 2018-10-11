@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    <ul>
+        {% for toy in toys %}
+            <li>{{ toy[1] }}</li>
+        {% endfor %}
+    </ul>
+    <form action="{{url_for('new_toy')}}">
+        <input type="submit" value="New">
+    </form>
+{% endblock %}

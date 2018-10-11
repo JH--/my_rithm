@@ -1,0 +1,59 @@
+Order,Year,Winner,Winner Electoral Votes,Runner-up,Runner-up Electoral Votes
+1st,1788,George Washington,69,John Adams,34
+2nd,1792,George Washington,132,John Adams,77
+3rd,1796,John Adams,71,Thomas Jefferson,68
+4th,1800,Thomas Jefferson,73,John Adams,64
+5th,1804,Thomas Jefferson,162,Charles Cotesworth Pinckney,14
+6th,1808,James Madison,113,Charles Cotesworth Pinckney,47
+7th,1812,James Madison,128,DeWitt Clinton,86
+8th,1816,James Monroe,83,Rufus King,22
+9th,1820,James Monroe,218,Richard Stockton,8
+10th,1824,Andrew Jackson,99,John Quincy Adams,74
+11th,1828,Andrew Jackson,171,John Quincy Adams,83
+12th,1832,Andrew Jackson,189,Henry Clay,49
+13th,1836,Martin Van Buren,147,William Henry Harrison,63
+14th,1840,William Henry Harrison,234,Martin Van Buren,48
+15th,1844,James K. Polk,170,Henry Clay,105
+16th,1848,Zachary Taylor,163,Lewis Cass,127
+17th,1852,Franklin Pierce,254,Winfield Scott,42
+18th,1856,James Buchanan,174,John C. Frémont,114
+19th,1860,Abraham Lincoln,180,John C. Breckinridge,72
+20th,1864,Abraham Lincoln,212,George B. McClellan,21
+21st,1868,Ulysses S. Grant,214,Horatio Seymour,80
+22nd,1872,Ulysses S. Grant,286,Thomas A. Hendricks,42
+23rd,1876,Rutherford B. Hayes,185,Samuel J. Tilden,184
+24th,1880,James A. Garfield,214,Winfield Scott Hancock,155
+25th,1884,Grover Cleveland,219,James G. Blaine,182
+26th,1888,Benjamin Harrison,233,Grover Cleveland,168
+27th,1892,Grover Cleveland,277,Benjamin Harrison,145
+28th,1896,William McKinley,271,William Jennings Bryan,149
+29th,1900,William McKinley,292,William Jennings Bryan,155
+30th,1904,Theodore Roosevelt,336,Alton B. Parker,140
+31st,1908,William Howard Taft,321,William Jennings Bryan,162
+32nd,1912,Woodrow Wilson,435,Theodore Roosevelt,88
+33rd,1916,Woodrow Wilson,277,Charles Evans Hughes,254
+34th,1920,Warren G. Harding,404,James M. Cox,127
+35th,1924,Calvin Coolidge,382,John W. Davis,136
+36th,1928,Herbert Hoover,444,Al Smith,87
+37th,1932,Franklin D. Roosevelt,472,Herbert Hoover,59
+38th,1936,Franklin D. Roosevelt,523,Alf Landon,8
+39th,1940,Franklin D. Roosevelt,449,Wendell Willkie,82
+40th,1944,Franklin D. Roosevelt,432,Thomas E. Dewey,99
+41st,1948,Harry S. Truman,303,Thomas E. Dewey,189
+42nd,1952,Dwight D. Eisenhower,442,Adlai Stevenson II,89
+43rd,1956,Dwight D. Eisenhower,457,Adlai Stevenson II,73
+44th,1960,John F. Kennedy,303,Richard Nixon,219
+45th,1964,Lyndon B. Johnson,486,Barry Goldwater,52
+46th,1968,Richard Nixon,301,Hubert Humphrey,191
+47th,1972,Richard Nixon,520,George McGovern,17
+48th,1976,Jimmy Carter,297,Gerald Ford,240
+49th,1980,Ronald Reagan,489,Jimmy Carter,49
+50th,1984,Ronald Reagan,525,Walter Mondale,13
+51st,1988,George H. W. Bush,426,Michael Dukakis,111
+52nd,1992,Bill Clinton,370,George H. W. Bush,168
+53rd,1996,Bill Clinton,379,Bob Dole,159
+54th,2000,George W. Bush,271,Al Gore,266
+55th,2004,George W. Bush,286,John Kerry,251
+56th,2008,Barack Obama,365,John McCain,173
+57th,2012,Barack Obama,332,Mitt Romney,206
+58th,2016,Donald Trump,304,Hillary Clinton,227

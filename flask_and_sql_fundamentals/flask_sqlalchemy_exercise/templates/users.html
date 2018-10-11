@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Users</h3>
+<ul>
+    {% for user in users %}
+    <li>
+        <a href="{{ url_for('show_user', id=user.id) }}"
+        style="text-decoration: none;color: black;">
+        {{ user.first_name }} {{ user.last_name }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+<form action="{{ url_for('new_user') }}">
+        <input type="submit" value="Sign Up">
+    </form>
+<form action="{{ url_for('index') }}">
+        <input type="submit" value="Messages">
+    </form>
+{% endblock %}

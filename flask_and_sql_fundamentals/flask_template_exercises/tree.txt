@@ -1,0 +1,14 @@
+[01;34m.[00m
+├── app.py
+├── exercises.txt
+├── [01;34m__pycache__[00m
+│   └── app.cpython-36.pyc
+├── [01;34mtemplates[00m
+│   ├── base.html
+│   ├── calc.html
+│   ├── person.html
+│   ├── results.html
+│   └── search.html
+└── tree.txt
+
+2 directories, 9 files

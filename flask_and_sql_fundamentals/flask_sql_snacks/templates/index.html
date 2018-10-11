@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3>Snack List</h3>
+    <ul>
+        {% for snack in snacks %}
+            <li>
+                <a href="{{ url_for('show_snack', id=snack[0]) }}"
+                style="text-decoration: none;color: black;">
+                {{ snack[2] }}  {{ snack[1] }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <form>
+        <input type="button" name="add" id="add" value="New"
+        onclick="window.location.href='{{ url_for('new_snack') }}'">
+    </form>
+{% endblock %}
