@@ -3,8 +3,7 @@ from flask_modus import Modus
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, validate_csrf, ValidationError
-from re import search
-from forms import UserForm
+from forms import UserForm, MessageForm
 import os
 
 app = Flask(__name__)
@@ -65,7 +64,8 @@ def index():
 
 @app.route("/messages/new/<int:user_id>")
 def new_message(user_id):
-    return render_template("new_message.html", user_id=user_id)
+    form = MessageForm(request.form)
+    return render_template("new_message.html", user_id=user_id, form=form)
 
 
 @app.route("/messages/<int:id>", methods=["GET"])
@@ -75,17 +75,21 @@ def show_message(id):
 
 @app.route("/messages/<int:id>", methods=["DELETE"])
 def delete_message(id):
-    db.session.delete(Message.query.get(id))
-    db.session.commit()
-    return redirect(url_for("index"))
+    try:
+        validate_csrf(request.form.get("csrf_token"))
+        db.session.delete(Message.query.get(id))
+        db.session.commit()
+        return redirect(url_for("index"))
+    except ValidationError:
+        return redirect(url_for("index"))
 
 
 @app.route("/messages/<int:id>", methods=["PATCH"])
 def message_edit(id):
     message = Message.query.get(id)
-    edit = request.form["message"]
-    if search("[^ ]+", edit):
-        message.content = edit
+    form = MessageForm(request.form)
+    if form.validate():
+        message.content = form.data["content"]
         db.session.add(message)
         db.session.commit()
     return redirect(url_for("show_user", id=message.user_id))
@@ -93,16 +97,18 @@ def message_edit(id):
 
 @app.route("/messages/<int:user_id>", methods=["POST"])
 def add_message(user_id):
-    message = request.form["message"]
-    if search("[^ ]+", message):
-        db.session.add(Message(message, user_id))
+    form = MessageForm(request.form)
+    if form.validate():
+        db.session.add(Message(form.data["content"], user_id))
         db.session.commit()
     return redirect(url_for("index"))
 
 
 @app.route("/messages/<int:id>/edit")
 def edit_message(id):
-    return render_template("edit_message.html", message=Message.query.get(id))
+    found_message = Message.query.get(id)
+    form = MessageForm(obj=found_message)
+    return render_template("edit_message.html", form=form, message=found_message)
 
 
 @app.route("/users", methods=["GET"])
@@ -114,9 +120,7 @@ def show_users():
 def add_user():
     form = UserForm(request.form)
     if form.validate():
-        first_name = form.data["first_name"]
-        last_name = form.data["last_name"]
-        db.session.add(User(first_name, last_name))
+        db.session.add(User(form.data["first_name"], form.data["last_name"]))
         db.session.commit()
         return redirect(url_for("show_users"))
     return redirect(url_for("new_user"))

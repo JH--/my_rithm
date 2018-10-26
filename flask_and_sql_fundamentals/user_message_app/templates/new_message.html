@@ -1,7 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 <form action="{{ url_for('add_message', user_id=user_id) }}" method="POST">
+    <!--
     <input type="text" name="message" placeholder="New Message">
     <input type="submit" name="new" id="new" value="Submit">
+    -->
+    {{ form.hidden_tag() }}
+    {% for field in form if field.widget.input_type != 'hidden' %}
+    <p>
+        {{ field.label }}
+        {{ field }}
+        <span>
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    {{ error }}
+                {% endfor %}
+            {% endif %}
+        </span>
+    </p>
+    {% endfor %}
+    <button type="submit">Submit</button>
 </form>
 {% endblock %}
