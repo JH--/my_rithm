@@ -2,8 +2,20 @@
 {% block content %}
 <h3>Sign up and start leaving messages</h3>
 <form action="{{ url_for('add_user') }}" method="POST">
-    <input type="text" name="first_name" placeholder="First Name">
-    <input type="text" name="last_name" placeholder="Last Name">
-    <input type="submit" value="Sign Up">
+    {{ form.hidden_tag() }}
+    {% for field in form if field.widget.input_type != 'hidden' %}
+    <p>
+        {{ field.label }}
+        {{ field }}
+        <span>
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    {{ error }}
+                {% endfor %}
+            {% endif %}
+        </span>
+    </p>
+    {% endfor %}
+    <button type="submit">Sign Up</button>
 </form>
 {% endblock %}

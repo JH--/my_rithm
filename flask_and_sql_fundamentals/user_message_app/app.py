@@ -3,10 +3,13 @@ from flask_modus import Modus
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from re import search
+from forms import UserForm
+import os
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgres:///flask_sqlalchemy_exercise"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")  # "secret key string"
 modus = Modus(app)
 db = SQLAlchemy(app)
 Migrate(app, db)
@@ -107,18 +110,20 @@ def show_users():
 
 @app.route("/users", methods=["POST"])
 def add_user():
-    first_name = request.form["first_name"]
-    last_name = request.form["last_name"]
-    if not search("[^ ]+", first_name) or not search("[^ ]+", last_name):
-        return redirect(url_for("new_user"))
-    db.session.add(User(first_name, last_name))
-    db.session.commit()
-    return redirect(url_for("show_users"))
+    form = UserForm(request.form)
+    if form.validate():
+        first_name = form.data.first_name
+        last_name = form.data.last_name
+        db.session.add(User(first_name, last_name))
+        db.session.commit()
+        return redirect(url_for("show_users"))
+    return redirect(url_for("new_user"))
 
 
 @app.route("/users/new")
 def new_user():
-    return render_template("new_user.html")
+    form = UserForm(request.form)
+    return render_template("new_user.html", form=form)
 
 
 @app.route("/users/<int:id>", methods=["GET"])
@@ -136,7 +141,7 @@ def edit_user(id):
     first_name = request.form["first_name"]
     last_name = request.form["last_name"]
     if not search("[^ ]+", first_name) or not search("[^ ]+", last_name):
-        return redirect(url_for('show_user', id=id))
+        return redirect(url_for("show_user", id=id))
     user.first_name = first_name
     user.last_name = last_name
     db.session.add(user)
@@ -156,7 +161,9 @@ def delete_user(id):
 
 @app.route("/users/<int:id>/edit")
 def edit(id):
-    return render_template("edit_user.html", user=User.query.get(id))
+    found_user = User.query.get(id)
+    form = UserForm(obj=found_user)
+    return render_template("edit_user.html", form=form, user=found_user)
 
 
 @app.errorhandler(404)
