@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_modus import Modus
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_wtf.csrf import CSRFProtect, validate_csrf, ValidationError
 from re import search
 from forms import UserForm
 import os
@@ -9,7 +10,8 @@ import os
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgres:///flask_sqlalchemy_exercise"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")  # "secret key string"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+csrf = CSRFProtect(app)
 modus = Modus(app)
 db = SQLAlchemy(app)
 Migrate(app, db)
@@ -112,8 +114,8 @@ def show_users():
 def add_user():
     form = UserForm(request.form)
     if form.validate():
-        first_name = form.data.first_name
-        last_name = form.data.last_name
+        first_name = form.data["first_name"]
+        last_name = form.data["last_name"]
         db.session.add(User(first_name, last_name))
         db.session.commit()
         return redirect(url_for("show_users"))
@@ -138,24 +140,26 @@ def show_user(id):
 @app.route("/users/<int:id>", methods=["PATCH"])
 def edit_user(id):
     user = User.query.get(id)
-    first_name = request.form["first_name"]
-    last_name = request.form["last_name"]
-    if not search("[^ ]+", first_name) or not search("[^ ]+", last_name):
-        return redirect(url_for("show_user", id=id))
-    user.first_name = first_name
-    user.last_name = last_name
-    db.session.add(user)
-    db.session.commit()
+    form = UserForm(request.form)
+    if form.validate():
+        user.first_name = form.data["first_name"]
+        user.last_name = form.data["last_name"]
+        db.session.add(user)
+        db.session.commit()
     return redirect(url_for("show_users"))
 
 
 @app.route("/users/<int:id>", methods=["DELETE"])
 def delete_user(id):
-    db.session.query(Message).filter(Message.user_id == id).delete(
-        synchronize_session=False
-    )
-    db.session.delete(User.query.get(id))
-    db.session.commit()
+    try:
+        validate_csrf(request.form.get("csrf_token"))
+        db.session.query(Message).filter(Message.user_id == id).delete(
+            synchronize_session=False
+        )
+        db.session.delete(User.query.get(id))
+        db.session.commit()
+    except ValidationError:
+        return redirect(url_for("show_uers"))
     return redirect(url_for("index"))
 
 

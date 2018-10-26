@@ -22,6 +22,7 @@
     <input type="submit" name="edit_user" id="edit_user_btn" value="Change Name">
 </form>
 <form action="{{ url_for('delete_user', id=user.id) }}?_method=DELETE" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input type="submit" name="del_user" id="del_user_btn" value="Delete Account">
 </form>
 <form action="{{ url_for('index') }}">
