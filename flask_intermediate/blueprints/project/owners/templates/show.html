@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Welcome to the show page!</h1>
+    <p>
+        {{owner.first_name}} {{owner.last_name}}
+        <br>
+    </p>
+    <p>Delete me?</p>
+
+    <form method="POST" action="{{url_for('owners.delete', id=owner.id)}}?_method=DELETE">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="submit" value="X">
+    </form>
+{% endblock %}
