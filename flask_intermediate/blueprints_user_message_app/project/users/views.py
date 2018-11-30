@@ -26,3 +26,15 @@ def new():
     form = UserForm()
     return render_template("new.html", form=form)
 
+
+@users_blueprint.route("/<int:id>/edit")
+def edit(id):
+    user = User.query.get(id)
+    form = User(obj=owner)
+    return render_template("edit.html", form=form, user=user)
+
+
+@users_blueprint.route("/<int:id>", methods=["GET"])
+def show(id):
+    return render_template("show.html", user=User.query.get(id))
+
