@@ -45,8 +45,19 @@ def edit_message(id):
     form = MessageForm(request.form)
     if form.validate():
         message = Message.query.get(id)
-        message.message = request.form['message']
+        message.message = request.form["message"]
         db.session.add(message)
         db.session.commit()
-    return redirect(url_for('messages.index'))
-    
+    return redirect(url_for("messages.index"))
+
+
+@messages_blueprint.route("/<int:id>", methods=["DELETE"])
+def delete(id):
+    try:
+        validate_csrf(request.form.get("csrf_token"))
+        db.session.delete(Message.query.get(id))
+        db.session.commit()
+        return redirect(url_for("messages.index"))
+    except ValidationError:
+        return redirect(url_for("messages.index"))
+
