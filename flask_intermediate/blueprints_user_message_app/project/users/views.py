@@ -42,9 +42,9 @@ def edit(id):
 
 @users_blueprint.route("/<int:id>", methods=["PATCH"])
 def edit_user(id):
-    user = User.query.get(id)
     form = UserForm(request.form)
     if form.validate():
+        user = User.query.get(id)
         user.first_name = request.form["first_name"]
         user.last_name = request.form["last_name"]
         db.session.add(user)
@@ -56,10 +56,9 @@ def edit_user(id):
 @users_blueprint.route("/<int:id>", methods=["DELETE"])
 def delete(id):
     try:
-        validate_csrf(request.form.get('csrf_token'))
+        validate_csrf(request.form.get("csrf_token"))
         db.session.delete(User.query.get(id))
         db.session.commit()
-        return redirect(url_for('users.index'))
+        return redirect(url_for("users.index"))
     except ValidationError:
-        return redirect(url_for('users.index'))
-        
+        return redirect(url_for("users.index"))
