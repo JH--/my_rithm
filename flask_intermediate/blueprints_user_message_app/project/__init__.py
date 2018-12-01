@@ -20,10 +20,14 @@ from project.users.views import users_blueprint
 
 app.register_blueprint(users_blueprint, url_prefix="/users")
 
+from project.messages.views import messages_blueprint
+
+app.register_blueprint(messages_blueprint, url_prefix="/messages")
+
 
 @app.route("/")
 def root():
-    return redirect(url_for("users.index"))  # "Hello Blueprints!"
+    return redirect(url_for("users.index"))
 
 
 # @app.errorhandler(404)

@@ -9,13 +9,13 @@ users_blueprint = Blueprint("users", __name__, template_folder="templates")
 
 @users_blueprint.route("/", methods=["GET"])
 def index():
-    return render_template("index.html", users=User.query.all())
+    return render_template("users/index.html", users=User.query.all())
 
 
 @users_blueprint.route("/new", methods=["GET"])
 def new():
     form = UserForm()
-    return render_template("new.html", form=form)
+    return render_template("users/new.html", form=form)
 
 
 @users_blueprint.route("/", methods=["POST"])
@@ -25,19 +25,19 @@ def new_user():
         db.session.add(User(request.form["first_name"], request.form["last_name"]))
         db.session.commit()
         return redirect(url_for("users.index"))
-    return render_template("new.html", form=form)
+    return render_template("users/new.html", form=form)
 
 
 @users_blueprint.route("/<int:id>", methods=["GET"])
 def show(id):
-    return render_template("show.html", user=User.query.get(id))
+    return render_template("users/show.html", user=User.query.get(id))
 
 
 @users_blueprint.route("/<int:id>/edit", methods=["GET"])
 def edit(id):
     user = User.query.get(id)
     form = UserForm(obj=user)
-    return render_template("edit.html", form=form, user=user)
+    return render_template("users/edit.html", form=form, user=user)
 
 
 @users_blueprint.route("/<int:id>", methods=["PATCH"])
@@ -50,7 +50,7 @@ def edit_user(id):
         db.session.add(user)
         db.session.commit()
         return redirect(url_for("users.index"))
-    return render_template("show.html", user=user)
+    return render_template("users/show.html", user=user)
 
 
 @users_blueprint.route("/<int:id>", methods=["DELETE"])
