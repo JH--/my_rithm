@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<form method="POST" action="{{url_for('users.show', id=user.id)}}?_method=PATCH">
+<form method="POST" action="{{url_for('users.edit_user', id=user.id)}}?_method=PATCH">
   {{ form.csrf_token }}
   <p>
     {{ form.first_name(placeholder="First Name") }}
