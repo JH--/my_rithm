@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<form method="POST" action="{{url_for('users.add_new_user')}}">
+<form method="POST" action="{{url_for('users.new_user')}}">
     {{ form.csrf_token }}
   <p>
     {{ form.first_name(placeholder="First Name") }}
