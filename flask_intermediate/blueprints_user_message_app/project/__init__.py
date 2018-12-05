@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_modus import Modus
 from flask_migrate import Migrate
@@ -29,8 +29,7 @@ app.register_blueprint(messages_blueprint, url_prefix="/messages")
 def root():
     return redirect(url_for("users.index"))
 
+def page_not_found(e):
+    return render_template('404.html'), 404
 
-# @app.errorhandler(404)
-# def page_not_found(e):
-#    return render_template("404.html")
-
+app.register_error_handler(404, page_not_found)

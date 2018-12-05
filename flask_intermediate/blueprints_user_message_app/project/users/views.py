@@ -30,12 +30,17 @@ def new_user():
 
 @users_blueprint.route("/<int:id>", methods=["GET"])
 def show(id):
-    return render_template("users/show.html", user=User.query.get(id))
+    user = User.query.get(id)
+    if not user:
+        return render_template("404.html")
+    return render_template("users/show.html", user=user)
 
 
 @users_blueprint.route("/<int:id>/edit", methods=["GET"])
 def edit(id):
     user = User.query.get(id)
+    if not user:
+        return render_template("404.html")
     form = UserForm(obj=user)
     return render_template("users/edit.html", form=form, user=user)
 

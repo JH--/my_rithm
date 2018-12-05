@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, request
 from flask_wtf.csrf import validate_csrf, ValidationError
 from project.messages.forms import MessageForm
-from project.models import Message
+from project.models import Message, User
 from project import db
 
 
@@ -15,6 +15,8 @@ def index():
 
 @messages_blueprint.route("/new/<int:user_id>", methods=["GET"])
 def new(user_id):
+    if not User.query.get(user_id):
+        return render_template("404.html")
     form = MessageForm()
     return render_template("messages/new.html", user_id=user_id, form=form)
 
@@ -30,12 +32,17 @@ def new_message(user_id):
 
 @messages_blueprint.route("/<int:id>", methods=["GET"])
 def show(id):
-    return render_template("messages/show.html", message=Message.query.get(id))
+    message = Message.query.get(id)
+    if not message:
+        return render_template("404.html")
+    return render_template("messages/show.html", message=message)
 
 
 @messages_blueprint.route("/<int:id>/edit", methods=["GET"])
 def edit(id):
     message = Message.query.get(id)
+    if not message:
+        return render_template("404.html")
     form = MessageForm(obj=message)
     return render_template("messages/edit.html", form=form, message=message)
 
