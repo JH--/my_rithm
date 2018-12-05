@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>{{ message.message }}</h1>
+    <form action="{{ url_for('messages.index') }}" method="GET">
+        <input type="submit" value="See All Messages">
+    </form>
     <form action="{{ url_for('messages.delete', id=message.id) }}?_method=DELETE" method="POST">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <input type="submit" value="Delete">

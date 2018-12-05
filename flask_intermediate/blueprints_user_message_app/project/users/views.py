@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, request
 from flask_wtf.csrf import validate_csrf, ValidationError
 from project.users.forms import UserForm
-from project.models import User
+from project.models import User, Message
 from project import db
 
 users_blueprint = Blueprint("users", __name__, template_folder="templates")
@@ -33,7 +33,9 @@ def show(id):
     user = User.query.get(id)
     if not user:
         return render_template("404.html")
-    return render_template("users/show.html", user=user)
+    return render_template(
+        "users/show.html", user=user, messages=Message.query.filter_by(user_id=id)
+    )
 
 
 @users_blueprint.route("/<int:id>/edit", methods=["GET"])

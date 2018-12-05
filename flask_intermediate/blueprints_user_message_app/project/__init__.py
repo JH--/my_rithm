@@ -25,11 +25,13 @@ from project.messages.views import messages_blueprint
 app.register_blueprint(messages_blueprint, url_prefix="/messages")
 
 
-@app.route("/")
-def root():
-    return redirect(url_for("users.index"))
-
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template("404.html"), 404
+
 
 app.register_error_handler(404, page_not_found)
+
+
+@app.route("/")
+def root():
+    return redirect(url_for("messages.index"))

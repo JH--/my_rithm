@@ -8,9 +8,16 @@ from project import db
 messages_blueprint = Blueprint("messages", __name__, template_folder="templates")
 
 
+def get_user_name(id):
+    user = User.query.get(id)
+    return f"{user.first_name} {user.last_name}"
+
+
 @messages_blueprint.route("/", methods=["GET"])
 def index():
-    return render_template("messages/index.html", messages=Message.query.all())
+    messages = Message.query.all()
+    users = {m.user_id: get_user_name(m.user_id) for m in messages}
+    return render_template("messages/index.html", messages=messages, users=users)
 
 
 @messages_blueprint.route("/new/<int:user_id>", methods=["GET"])
