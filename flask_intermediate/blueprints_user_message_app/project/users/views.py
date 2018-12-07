@@ -64,6 +64,9 @@ def edit_user(id):
 def delete(id):
     try:
         validate_csrf(request.form.get("csrf_token"))
+        db.session.query(Message).filter(Message.user_id == id).delete(
+            synchronize_session=False
+        )
         db.session.delete(User.query.get(id))
         db.session.commit()
         return redirect(url_for("users.index"))
