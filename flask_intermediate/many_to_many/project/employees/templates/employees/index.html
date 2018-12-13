@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for employee in employees %}
+    <p>
+        {{ employee.name }}:
+        {% for d in employee.departments %}
+        <p>
+            {{ d.name }}
+        </p>
+        {% endfor %}
+      <br>
+    </p>
+{% endfor %}
+{% endblock %}
