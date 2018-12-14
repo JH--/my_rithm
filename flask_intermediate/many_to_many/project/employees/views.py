@@ -36,4 +36,36 @@ def new_employee():
 
 @employees_blueprint.route("/<int:id>", methods=["GET"])
 def show(id):
-    return
+    employee = Employee.query.get(id)
+    if not employee:
+        return render_template("404.html")
+    return render_template(
+        "employees/show.html", employee=employee, departments=employee.departments
+    )
+
+
+@employees_blueprint.route("/<int:id>/edit", methods=["GET"])
+def edit(id):
+    employee = Employee.query.get(id)
+    if not employee:
+        return render_template("404.html")
+    form = NewEmployeeForm(obj=employee)
+    form.set_choices()
+    return render_template("employees/edit.html", form=form, employee=employee)
+
+
+@employees_blueprint.route("/<int:id>", methods=["PATCH"])
+def edit_employee(id):
+    form = NewEmployeeForm(request.form)
+    form.set_choices()
+    if form.validate():
+        employee = Employee.query.get(id)
+        employee.name = request.form['name']
+        employee.years_at_company = request.form['years_at_company']
+        for department in employee.departments:
+            employee.departments.remove(department)
+        for department in form.departments.data:
+            d = Department.query.get(department)
+            d.employees.extend([employee])
+        db.session.commit()
+    return redirect(url_for('employees.index'))
