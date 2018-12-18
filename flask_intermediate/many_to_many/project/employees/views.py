@@ -69,3 +69,15 @@ def edit_employee(id):
             d.employees.extend([employee])
         db.session.commit()
     return redirect(url_for('employees.index'))
+
+
+@employees_blueprint.route("/<int:id>", methods=["DELETE"])
+def delete(id):
+    try:
+        validate_csrf(request.form.get('csrf_token'))
+        db.session.delete(Employee.query.get(id))
+        db.session.commit()
+    except ValidationError:
+        pass
+    finally:
+        return redirect(url_for('employees.index'))
