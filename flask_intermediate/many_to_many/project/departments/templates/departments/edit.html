@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" action="{{url_for('departments.edit_department', id=department.id)}}?_method=PATCH">
+        {{ form.csrf_token }}
+      <p>
+          <p>
+              {{ form.name.label}}:
+          </p>
+        {{ form.name(placeholder="Name") }}
+        <span>
+          {% if form.name.errors %}
+            {% for error in form.name.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+      </p>
+      <button type="submit">Edit department</button>
+    </form>
+    <form action="{{ url_for('departments.index') }}" method="GET">
+        <input type="submit" value="Cancel">
+    </form>
+{% endblock %}

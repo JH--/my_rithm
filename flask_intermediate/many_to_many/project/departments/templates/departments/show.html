@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ department.name }}</h1>
+    {% for employee in employees %}
+        <p>
+            {{ employee.name }}
+        </p>
+    {% endfor %}
+    <form action="{{ url_for('departments.delete', id=department.id) }}?_method=DELETE" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <input type="submit" value="Delete Department">
+    </form>
+{% endblock %}
