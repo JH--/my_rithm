@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" action="{{url_for('messages.edit_message', id=message.id)}}?_method=PATCH">
+  {{ form.csrf_token }}
+  <p>
+    {{ form.message(placeholder="Message") }}
+    <span>
+      {% if form.message.errors %}
+        {% for error in form.message.errors %}
+          {{ error }}
+        {% endfor %}
+      {% endif %}
+    </span>
+  </p>
+  <button type="submit">Edit</button>
+</form>
+<form action="{{ url_for('users.show', id=message.users[0].id) }}" method="GET">
+    <input type="submit" value="Cancel">
+</form>
+{% endblock %}
