@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ tag.tag }}</h1>
+    {% for message in tag.messages %}
+    <p>
+        <a href="{{ url_for('messages.show', id=message.id) }}"
+        style="text-decoration: none;color: black;">
+        {{ message.message }}
+    </a>
+    <br>
+</p>
+{% endfor %}
+<form action="{{ url_for('tags.delete', id=tag.id) }}?_method=DELETE" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <input type="submit" value="X" style="color: red;">
+</form>
+<form action="{{ url_for('tags.edit', id=tag.id) }}" method="GET">
+  <input type="submit" value="Edit">
+</form>
+<form action="{{ url_for('users.index') }}" method="GET">
+  <input type="submit" value="Users">
+</form>
+<form action="{{ url_for('messages.index') }}" method="GET">
+  <input type="submit" value="Messages">
+</form>
+<form action="{{ url_for('tags.index') }}" method="GET">
+  <input type="submit" value="Tags">
+</form>
+{% endblock %}

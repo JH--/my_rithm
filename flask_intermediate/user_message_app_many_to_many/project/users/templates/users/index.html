@@ -13,6 +13,9 @@
         <input type="submit" value="Sign Up">
     </form>
     <form action="{{ url_for('messages.index') }}" method="GET">
-        <input type="submit" value="See All Messages">
+        <input type="submit" value="Messages">
+    </form>
+    <form action="{{ url_for('tags.index') }}" method="GET">
+        <input type="submit" value="Tags">
     </form>
 {% endblock %}

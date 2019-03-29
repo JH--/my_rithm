@@ -1,19 +1,18 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectMultipleField, widgets
 from wtforms.validators import DataRequired
-from project.models import Tag
+from project.models import Message
 
 
-class MessageForm(FlaskForm):
-    message = StringField("message", validators=[DataRequired()])
-    tags = SelectMultipleField(
-        "Tags",
+class TagForm(FlaskForm):
+    tag = StringField("tag", validators=[DataRequired()])
+    messages = SelectMultipleField(
+        "messages",
         coerce=int,
         widget=widgets.ListWidget(prefix_label=False),
         option_widget=widgets.CheckboxInput(),
     )
-    new_tag = StringField("new_tag")
 
     def set_choices(self):
-        self.tags.choices = [(t.id, t.tag) for t in Tag.query.all()]
+        self.messages.choices = [(m.id, m.message) for m in Message.query.all()]
 

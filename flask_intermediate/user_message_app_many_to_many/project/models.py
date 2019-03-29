@@ -9,6 +9,15 @@ UserMessages = db.Table(
     ),
 )
 
+MessageTags = db.Table(
+    "message_tags",
+    db.Column("id", db.Integer, primary_key=True),
+    db.Column(
+        "message_id", db.Integer, db.ForeignKey("messages.id", ondelete="cascade")
+    ),
+    db.Column("tag_id", db.Integer, db.ForeignKey("tags.id", ondelete="cascade")),
+)
+
 
 class User(db.Model):
     __tablename__ = "users"
@@ -33,3 +42,16 @@ class Message(db.Model):
 
     def __init__(self, message):
         self.message = message
+
+
+class Tag(db.Model):
+    __tablename__ = "tags"
+
+    id = db.Column(db.Integer, primary_key=True)
+    tag = db.Column(db.Text)
+    messages = db.relationship(
+        "Message", secondary=MessageTags, backref=db.backref("tags")
+    )
+
+    def __init__(self, tag):
+        self.tag = tag

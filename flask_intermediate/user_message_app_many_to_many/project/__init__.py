@@ -24,6 +24,10 @@ from project.messages.views import messages_blueprint
 
 app.register_blueprint(messages_blueprint, url_prefix="/messages")
 
+from project.tags.views import tags_blueprint
+
+app.register_blueprint(tags_blueprint, url_prefix="/tags")
+
 
 def page_not_found(e):
     return render_template("404.html"), 404
