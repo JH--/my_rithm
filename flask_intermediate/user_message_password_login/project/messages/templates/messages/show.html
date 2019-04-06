@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ message.message }}</h1>
+    {% for tag in message.tags %}
+    <ul>
+        <li>
+            {{ tag.tag }}
+        </li>
+    </ul>
+    {% endfor%}
+    <form action="{{ url_for('users.index') }}" method="GET">
+        <input type="submit" value="Users">
+    </form>
+    <form action="{{ url_for('messages.index') }}" method="GET">
+        <input type="submit" value="Messages">
+    </form>
+    <form action="{{ url_for('tags.index') }}" method="GET">
+        <input type="submit" value="Tags">
+    </form>
+{% endblock %}

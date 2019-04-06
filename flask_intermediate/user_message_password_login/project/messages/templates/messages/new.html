@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" action="{{url_for('messages.new_message', user_id=user_id)}}">
+    {{ form.csrf_token }}
+  <p>
+    {{ form.message(placeholder="New Message") }}
+    <span>
+      {% if form.message.errors %}
+        {% for error in form.message.errors %}
+          {{ error }}
+        {% endfor %}
+      {% endif %}
+    </span>
+  </p>
+  <p>
+    {{ form.tags }}
+  </p>
+  <p>
+    {{ form.new_tag(placeholder="New Tag") }}
+    <span>
+      {% if form.new_tag.errors %}
+        {% for error in form.new_tag.errors %}
+          {{ error }}
+        {% endfor %}
+      {% endif %}
+    </span>
+  </p>
+  <button type="submit">Add message</button>
+</form>
+<form action="{{ url_for('messages.index') }}" method="GET">
+    <input type="submit" value="Cancel">
+</form>
+{% endblock %}

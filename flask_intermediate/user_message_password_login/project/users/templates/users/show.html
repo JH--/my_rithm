@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+    {% for message in messages %}
+        {{ message.message }}
+        <form action="{{ url_for('messages.edit', id=message.id) }}">
+            <input type="submit" name="edit_message" id="edit_message_btn" value="Edit">
+        </form>
+        <form action="{{ url_for('messages.delete', id=message.id) }}?_method=DELETE" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="submit" name="del_message" id="del_message_btn"
+            value="X" style="color: red;">
+        </form>
+    {% endfor %}
+
+    <form action="{{ url_for('messages.new', user_id=user.id) }}" method="GET">
+        <input type="submit" value="New Message">
+    </form>
+    <form action="{{ url_for('users.edit', id=user.id) }}" method="GET">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <input type="submit" value="Change Name">    
+    </form>
+    <form action="{{ url_for('users.delete', id=user.id) }}?_method=DELETE" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <input type="submit" value="Delete Account">
+    </form>
+    <form action="{{ url_for('users.index') }}" method="GET">
+        <input type="submit" value="Users">
+    </form>
+    <form action="{{ url_for('messages.index') }}" method="GET">
+        <input type="submit" value="Messages">
+    </form>
+    <form action="{{ url_for('tags.index') }}" method="GET">
+        <input type="submit" value="Tags">
+    </form>
+    {% endblock %}
+    

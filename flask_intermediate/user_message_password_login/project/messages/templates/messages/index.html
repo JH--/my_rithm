@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Messages from People</h1>
+<ul>
+  {% for message in messages %}
+  <li>
+    <a
+      href="{{ url_for('messages.show', id=message.id) }}"
+      style="text-decoration: none;color: black;"
+    >
+      {{ message.message }}
+    </a>
+    ---
+    <a
+      href="{{ url_for('users.show', id=message.users[0].id) }}"
+      style="text-decoration: none;color: black;"
+    >
+      {{ message.users[0].first_name }} {{ message.users[0].last_name }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+<form action="{{ url_for('users.new') }}">
+  <input type="submit" value="Sign Up" />
+</form>
+<form action="{{ url_for('users.index') }}">
+  <input type="submit" value="Users" />
+</form>
+<form action="{{ url_for('tags.index') }}">
+  <input type="submit" value="Tags" />
+</form>
+{% endblock %}

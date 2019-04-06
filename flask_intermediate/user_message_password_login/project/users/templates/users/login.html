@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" action="{{url_for('users.login_user')}}">
+    {{ form.csrf_token }}
+
+    {{ form.user_name(placeholder="User Name") }}
+    <span>
+      {% if form.user_name.errors %}
+        {% for error in form.user_name.errors %}
+          {{ error }}
+        {% endfor %}
+      {% endif %}
+    </span>
+  </p>
+  <p>
+    {{ form.password(placeholder="Password") }}
+    <span>
+      {% if form.password.errors %}
+        {% for error in form.password.errors %}
+          {{ error }}
+        {% endfor %}
+      {% endif %}
+    </span>
+  </p>
+  <button type="submit">Sign In</button>
+</form>
+<form action="{{ url_for('users.index') }}" method="GET">
+    <input type="submit" value="Cancel">
+</form>
+{% endblock %}
