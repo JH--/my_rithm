@@ -65,6 +65,7 @@ def get_new_tag(new_tag):
 
 
 @messages_blueprint.route("/<int:id>", methods=["GET"])
+@ensure_authenticated
 def show(id):
     message = Message.query.get(id)
     if not message:

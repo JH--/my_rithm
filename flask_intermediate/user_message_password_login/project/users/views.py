@@ -88,7 +88,6 @@ def login_user():
 
 @users_blueprint.route("/<int:id>", methods=["GET"])
 @ensure_authenticated
-@ensure_correct_user
 def show(id):
     user = User.query.get(id)
     if not user:
