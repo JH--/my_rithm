@@ -8,6 +8,16 @@
         </li>
     </ul>
     {% endfor%}
+    {% if g.current_user == message.users[0] %}
+    <form action="{{ url_for('messages.edit', id=message.id) }}">
+        <input type="submit" name="edit_message" id="edit_message_btn" value="Edit">
+    </form>
+    <form action="{{ url_for('messages.delete', id=message.id) }}?_method=DELETE" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="submit" name="del_message" id="del_message_btn"
+        value="X" style="color: red;">
+    </form>
+    {% endif %}
     <form action="{{ url_for('users.index') }}" method="GET">
         <input type="submit" value="Users">
     </form>

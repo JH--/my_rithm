@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, request
+from flask import Blueprint, render_template, redirect, url_for, request, g, session
 from flask_wtf.csrf import validate_csrf, ValidationError
 from project.messages.forms import MessageForm
 from project.models import Message, User, Tag
@@ -10,6 +10,14 @@ from project.decorators import (
 )
 
 messages_blueprint = Blueprint("messages", __name__, template_folder="templates")
+
+
+@messages_blueprint.before_request
+def current_user():
+    if session.get("user_id"):
+        g.current_user = User.query.get(session["user_id"])
+    else:
+        g.current_user = None
 
 
 @messages_blueprint.route("/", methods=["GET"])

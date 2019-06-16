@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-    {% for message in messages %}
-        {{ message.message }}
-        <form action="{{ url_for('messages.edit', id=message.id) }}">
-            <input type="submit" name="edit_message" id="edit_message_btn" value="Edit">
-        </form>
-        <form action="{{ url_for('messages.delete', id=message.id) }}?_method=DELETE" method="POST">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <input type="submit" name="del_message" id="del_message_btn"
-            value="X" style="color: red;">
-        </form>
-    {% endfor %}
-
+    <ul>
+        {% for message in messages %}
+        <li>
+          <a
+            href="{{ url_for('messages.show', id=message.id) }}"
+            style="text-decoration: none;color: black;"
+          >
+            {{ message.message }}
+          </a>
+        </li>
+        {% endfor %}
+    </ul>
     <form action="{{ url_for('messages.new', user_id=user.id) }}" method="GET">
         <input type="submit" value="New Message">
     </form>
