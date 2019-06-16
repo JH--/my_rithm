@@ -3,7 +3,11 @@ from flask_wtf.csrf import validate_csrf, ValidationError
 from project.messages.forms import MessageForm
 from project.models import Message, User, Tag
 from project import db
-
+from project.decorators import (
+    ensure_authenticated,
+    ensure_correct_user,
+    ensure_correct_user_edit_delete,
+)
 
 messages_blueprint = Blueprint("messages", __name__, template_folder="templates")
 
@@ -15,6 +19,8 @@ def index():
 
 
 @messages_blueprint.route("/new/<int:user_id>", methods=["GET"])
+@ensure_authenticated
+@ensure_correct_user
 def new(user_id):
     if not User.query.get(user_id):
         return render_template("404.html")
@@ -24,6 +30,8 @@ def new(user_id):
 
 
 @messages_blueprint.route("/<int:user_id>", methods=["POST"])
+@ensure_authenticated
+@ensure_correct_user
 def new_message(user_id):
     form = MessageForm(request.form)
     form.set_choices()
@@ -57,6 +65,8 @@ def show(id):
 
 
 @messages_blueprint.route("/<int:id>/edit", methods=["GET"])
+@ensure_authenticated
+@ensure_correct_user_edit_delete
 def edit(id):
     message = Message.query.get(id)
     if not message:
@@ -69,6 +79,8 @@ def edit(id):
 
 
 @messages_blueprint.route("/<int:id>", methods=["PATCH"])
+@ensure_authenticated
+@ensure_correct_user_edit_delete
 def edit_message(id):
     form = MessageForm(request.form)
     form.set_choices()
@@ -85,6 +97,8 @@ def edit_message(id):
 
 
 @messages_blueprint.route("/<int:id>", methods=["DELETE"])
+@ensure_authenticated
+@ensure_correct_user_edit_delete
 def delete(id):
     try:
         validate_csrf(request.form.get("csrf_token"))
